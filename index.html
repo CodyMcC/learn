@@ -1,9 +1,32 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Example</title>
-    </head>
-    <body>
-        <p>This is an example of a simple HTML page with one paragraph.</p>
-    </body>
+<head>
+    <title>Temperature Conversion Calculator</title>
+</head>
+<body>
+    <h1>Temperature Conversion Calculator</h1>
+    <input type="number" id="temperature" placeholder="Enter temperature">
+    <select id="scale">
+        <option value="C">Celsius</option>
+        <option value="F">Fahrenheit</option>
+    </select>
+    <button onclick="convertTemperature()">Convert</button>
+    <p id="result"></p>
+
+    <script>
+        function convertTemperature() {
+            var temp = document.getElementById('temperature').value;
+            var scale = document.getElementById('scale').value;
+            fetch('https://your-api-url/convert', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ temperature: temp, scale: scale })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerText = data.result;
+            });
+        }
+    </script>
+</body>
 </html>
