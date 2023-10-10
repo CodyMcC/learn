@@ -17,7 +17,7 @@
         function convertTemperature() {
             var temp = document.getElementById('temperature').value;
             var scale = document.getElementById('scale').value;
-            fetch('https://your-api-url/convert', {
+            fetch('https://032fafnkw6.execute-api.us-east-1.amazonaws.com/default/convert', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ temperature: temp, scale: scale })
