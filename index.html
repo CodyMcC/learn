@@ -4,7 +4,7 @@
     <title>Temperature Conversion Calculator</title>
 </head>
 <body>
-    <h1>Temperature Conversion Calculator v0.5</h1>
+    <h1>Temperature Conversion Calculator v0.0.1</h1>
     <input type="number" id="temperature" placeholder="Enter temperature">
     <select id="scale">
         <option value="C">Celsius</option>
@@ -47,6 +47,7 @@
       document.getElementById('response').innerText = JSON.stringify(data, null, 2);
     } catch (error) {
       console.error('Error:', error);
+      console.error('Error', error.message);
     }
   }
 </script>
