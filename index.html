@@ -4,14 +4,16 @@
     <title>Temperature Conversion Calculator</title>
 </head>
 <body>
-    <h1>Temperature Conversion Calculator v0.3</h1>
+    <h1>Temperature Conversion Calculator v0.5</h1>
     <input type="number" id="temperature" placeholder="Enter temperature">
     <select id="scale">
         <option value="C">Celsius</option>
         <option value="F">Fahrenheit</option>
     </select>
     <button onclick="convertTemperature()">Convert</button>
+    <button onclick="postData()">Func2</button>
     <p id="result"></p>
+	<p id="response"></p>
 
     <script>
         function convertTemperature() {
@@ -23,12 +25,31 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ temperature: temp, scale: scale })
             })
-            .then(response => {document.getElementById('result').innerText = '12345';})
+            .then(document.getElementById('result').innerText = '12345')
             .then(response => response.json())
             .then(data => {
                 document.getElementById('result').innerText = '123';
             });
         }
     </script>
+    
+    <script>
+  async function postData() {
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ key1: 'value1', key2: 'value2' })  // Replace with your data
+    };
+
+    try {
+      const response = await fetch('https://032fafnkw6.execute-api.us-east-1.amazonaws.com/default/convert', requestOptions);
+      const data = await response.json();
+      document.getElementById('response').innerText = JSON.stringify(data, null, 2);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+</script>
+
 </body>
 </html>
