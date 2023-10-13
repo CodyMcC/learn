@@ -4,7 +4,7 @@
     <title>Temperature Conversion Calculator</title>
 </head>
 <body>
-    <h1>Temperature Conversion Calculator v0.0.6</h1>
+    <h1>Temperature Conversion Calculator v0.0.7</h1>
     <input type="number" id="temperature" placeholder="Enter temperature">
     <select id="scale">
         <option value="C">Celsius</option>
@@ -26,7 +26,7 @@
                 body: JSON.stringify({ temperature: temp, scale: scale })
             })
             .then(document.getElementById('result').innerText = response.data)
-            .then(console.info('Info: ', response);)
+            .then(console.info('Info: ', response))
             .then(response => response.json())
             .then(data => {
                 document.getElementById('result').innerText = '123';
